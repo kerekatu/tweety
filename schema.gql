@@ -1,0 +1,31 @@
+# Fauna GraphQL limitations: https://docs.fauna.com/fauna/current/api/graphql/#limitations
+
+type Post {
+  body: String!
+  owner: User!
+}
+
+type User {
+  email: String! @unique
+  username: String!
+  posts: [Post!] @relation
+}
+
+type Query {
+  allPosts: [Post!]
+}
+
+# input PostInput {
+#   body: String
+#   user: String
+# }
+
+# type Mutation {
+#   createPost(post: PostInput): Post
+# }
+
+# interface MutationResponse {
+#   code: String!
+#   success: Boolean!
+#   message: String!
+# }
