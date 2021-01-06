@@ -11,7 +11,7 @@ handler.post(async (req, res) => {
   if (!req.body.email || !req.body.password || !req.body.username) {
     return res.status(400).send({
       success: false,
-      message: 'email, password and username must be provided',
+      message: 'Email, password and username must be provided',
     })
   }
 
@@ -36,7 +36,7 @@ handler.post(async (req, res) => {
       if (existingEmail || existingUsername) {
         return res.status(400).send({
           success: false,
-          message: 'user already exists',
+          message: 'User already exists',
         })
       }
 
@@ -50,7 +50,7 @@ handler.post(async (req, res) => {
       if (!user.ref)
         return res
           .status(400)
-          .send({ success: false, message: 'there is no user reference' })
+          .send({ success: false, message: 'There is no user reference' })
 
       const login = await guestClient.query(
         q.Login(user.ref, {
@@ -61,11 +61,11 @@ handler.post(async (req, res) => {
       if (!login.secret)
         return res
           .status(400)
-          .send({ success: false, message: 'login secret is missing' })
+          .send({ success: false, message: 'Login secret is missing' })
 
       serializeAuthCookie(res, login.secret)
 
-      res.status(200).send({ success: true, message: 'successfully signed up' })
+      res.status(200).send({ success: true, message: 'Successfully signed up' })
     } else {
       userSchema
         .validate({
@@ -81,7 +81,11 @@ handler.post(async (req, res) => {
   } catch (error) {
     res
       .status(400)
-      .send({ success: false, error, message: 'something went wrong' })
+      .send({
+        success: false,
+        error,
+        message: 'Something went wrong, please try again later',
+      })
   }
 })
 

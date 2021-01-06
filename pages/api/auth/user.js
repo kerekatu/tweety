@@ -13,16 +13,16 @@ handler.get(async (req, res) => {
     if (!token)
       return res
         .status(400)
-        .send({ success: false, message: 'auth token not found' })
+        .send({ success: false, message: 'Auth token not found' })
 
     const { ref, data } = await authClient(token).query(q.Get(q.Identity()))
 
-    res.status(200).json({ ...data, id: ref.id })
+    res.status(200).json({ success: true, ...data, id: ref.id })
   } catch (error) {
     res.status(400).send({
       success: false,
       error,
-      message: 'something went wrong, try again later',
+      message: 'Something went wrong, try again later',
     })
   }
 })

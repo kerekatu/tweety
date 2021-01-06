@@ -11,7 +11,7 @@ handler.post(async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res
       .status(400)
-      .send({ success: false, message: 'missing email or password' })
+      .send({ success: false, message: 'Missing email or password' })
   }
 
   try {
@@ -30,11 +30,11 @@ handler.post(async (req, res) => {
       if (!login.secret)
         return res
           .status(400)
-          .send({ success: false, message: 'login secret is missing' })
+          .send({ success: false, message: 'Login secret is missing' })
 
       serializeAuthCookie(res, login.secret)
 
-      res.status(200).send({ success: true, message: 'successfully logged in' })
+      res.status(200).send({ success: true, message: 'Successfully logged in' })
     } else {
       userSchema
         .validate({
@@ -49,7 +49,7 @@ handler.post(async (req, res) => {
     res.status(400).send({
       success: false,
       error,
-      message: 'something went wrong, try again later',
+      message: 'Wrong email or password',
     })
   }
 })

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+#__next {
+  min-height: 100vh;
+}
+
+button,
+input[type='submit'] {
+  cursor: pointer;
+}
