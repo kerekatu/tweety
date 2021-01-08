@@ -15,7 +15,9 @@ handler.get(async (req, res) => {
         .status(400)
         .send({ success: false, message: 'Auth token not found' })
 
-    const { ref, data } = await authClient(token).query(q.Get(q.Identity()))
+    const { ref, data } = await authClient(token).query(
+      q.Get(q.CurrentIdentity())
+    )
 
     res.status(200).json({ success: true, ...data, id: ref.id })
   } catch (error) {

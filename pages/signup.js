@@ -5,13 +5,30 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Form, FormInput } from '@/components/common/form/form'
 import { userSchemaWithUsername } from '@/lib/yup'
 import { useRouter } from 'next/router'
+import { getAuthCookie } from '@/lib/auth'
 
-const SignUp = () => {
+export async function getServerSideProps(ctx) {
+  const token = getAuthCookie(ctx.req)
+
+  return {
+    props: {
+      token: token || null,
+    },
+  }
+}
+
+const SignUp = ({ token }) => {
   const router = useRouter()
   const [errorMessage, setErrorMessage] = useState('')
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(userSchemaWithUsername),
   })
+
+  useEffect(() => {
+    if (token) {
+      router.replace('/')
+    }
+  }, [router, token])
 
   useEffect(() => {
     const timer = setTimeout(() => {

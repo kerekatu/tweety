@@ -9,6 +9,11 @@ type User {
   posts: [Post!] @relation
 }
 
+type Relationship {
+  follower: String!
+  following: String!
+}
+
 type Query {
   allPosts: [Post!]
 }
