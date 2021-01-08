@@ -52,6 +52,7 @@ const AddPost = ({ user, token }) => {
     } else {
       mutate(`/api/user/${router.query.user}`)
       reset(response)
+      setBodyText('')
     }
   })
 

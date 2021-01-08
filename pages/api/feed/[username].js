@@ -26,10 +26,11 @@ handler.get(async (req, res) => {
             q.Index('posts_by_user')
           )
         ),
-        q.Lambda(['ts', 'body', 'ref'], {
+        q.Lambda(['ts', 'body', 'ref', 'username'], {
           ts: q.Var('ts'),
-          body: q.Var('body'),
-          id: q.Var('ref'),
+          body: q.Var('ref'),
+          id: q.Var('body'),
+          username: q.Var('username'),
         })
       )
     )

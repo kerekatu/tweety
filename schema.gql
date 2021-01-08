@@ -1,6 +1,7 @@
 type Post {
   body: String!
   owner: User!
+  username: String!
 }
 
 type User {

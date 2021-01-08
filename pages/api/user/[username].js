@@ -14,13 +14,15 @@ handler.get(async (req, res) => {
     )
     delete userData.email
 
+    // weird bug with lambda variables
     const userPosts = await guestClient.query(
       q.Map(
         q.Paginate(q.Match(q.Index('posts_by_user'), userRef)),
-        q.Lambda(['body', 'ref', 'ts'], {
-          body: q.Var('ref'),
-          id: q.Var('ts'),
+        q.Lambda(['body', 'ref', 'ts', 'username'], {
+          body: q.Var('ts'),
+          id: q.Var('ref'),
           ts: q.Var('body'),
+          username: q.Var('username'),
         })
       )
     )

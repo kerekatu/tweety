@@ -60,7 +60,7 @@ const Sidebar = ({ sidebarProfile, isLoggedIn, user, currentUser }) => {
             </Link>
           </li>
           <li>
-            <Link href="/posts">
+            <Link href="/explore">
               <a
                 className="flex items-center gap-3 hover:text-blue-500 transition-colors"
                 title="Explore"
