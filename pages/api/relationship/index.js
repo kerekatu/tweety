@@ -21,6 +21,21 @@ handler.post(async (req, res) => {
         .send({ success: false, message: 'You cannot follow yourself, dummy' })
     }
 
+    // const userData = await authClient(token).query(q.Get(q.CurrentIdentity()))
+    // const relationExists = await authClient(token).query(
+    //   q.Paginate(
+    //     q.Match(
+    //       q.Index('following_by_follower'),
+    //       q.Call(q.Function('getUserRef'), userData.data.username)
+    //     )
+    //   )
+    // )
+    // if (relationExists) {
+    //   return res
+    //     .status(400)
+    //     .send({ success: false, message: 'Relation already exists' })
+    // }
+
     const data = {
       follower: q.Call(q.Function('getUserRef'), req.body.follower),
       following: q.Call(q.Function('getUserRef'), req.body.following),

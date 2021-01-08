@@ -57,7 +57,6 @@ const HomePage = ({ token }) => {
               <li>- Email valitation</li>
               <li>- Update follow button after following (+ add unfollow)</li>
               <li>- Add feedback to actions</li>
-              <li>- Add username to post schema</li>
               <li>- Explore page should at least show all available posts</li>
               <li>
                 - Add limit to number of relationship with the same values
