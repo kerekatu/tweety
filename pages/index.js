@@ -54,7 +54,7 @@ const HomePage = ({ token }) => {
           <p>
             <ul>
               Missing Features/Things to fix:
-              <li>- Email valitation</li>
+              <li>- Email validation</li>
               <li>- Update follow button after following (+ add unfollow)</li>
               <li>- Add feedback to actions</li>
               <li>- Explore page should at least show all available posts</li>
